@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: node-hello
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/claudio-bianco/argocd-node-hello.git
+    targetRevision: HEAD
+    path: k8s
+    # Se usar kustomize, o ArgoCD detecta automaticamente
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
