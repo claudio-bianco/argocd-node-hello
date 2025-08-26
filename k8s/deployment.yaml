@@ -22,7 +22,7 @@ spec:
       automountServiceAccountToken: false
       containers:
       - name: node-hello
-        image: node-hello:0.1.1
+        image: node-hello:0.1.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
@@ -31,7 +31,7 @@ spec:
         - name: PORT
           value: "3000"
         - name: APP_VERSION
-          value: "0.1.1"
+          value: "0.1.2"
         readinessProbe:
           httpGet:
             path: /readyz
